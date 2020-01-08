@@ -1,30 +1,53 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // actions
-import {} from './js/actions/index';
+import { addItem } from './redux/item/itemAction';
 
 // comp
-import List from './components/List';
-import AddForm from './components/AddForm';
-// import SearchForm from './components/SearchForm';
+import Header from './components/Header';
+import Table from './components/Table';
 
-class App2 extends React.Component {
+const mapStateToProps = state => ({
+  items: state.itemsRx.items
+});
+
+const mapDispatchToProps = dispatch => ({
+  addingItem: itemName => dispatch(addItem(itemName))
+});
+
+class App extends React.Component {
   componentDidMount() {}
 
+  // handleChange(e) {
+  //   const { name, value } = e.target;
+  //   this.setState({ [name]: value });
+  // }
+
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //   const { input } = this.state;
+
+  //   if (!input.trim()) return;
+
+  //   this.props.addingItem(input);
+  //   this.setState({ input: '' });
+  // }
+
   render() {
+    // const { items } = this.props;
+    // const { input } = this.state;
+
     return (
       <>
-        <div>
-          <h2>Articles</h2>
-          <List />
+        <Header />
+        <div className="container">
+          <div className="card">
+            <Table />
+          </div>
         </div>
-        <div>
-          <h4>Add new article</h4>
-          <AddForm />
-        </div>
-        >
       </>
     );
   }
 }
-export default App2;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
