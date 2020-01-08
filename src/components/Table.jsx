@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import ActionButtons from './ActionButtons';
 
 const mapStateToProps = state => ({
-  items: state.itemsRx.items
+  items: state.itemsRx.items,
+  searchText: state.itemsRx.searchText
 });
 
-function Table({ items }) {
+function Table({ items, searchText }) {
   return (
     <table className="table table-striped">
       <thead>
@@ -21,17 +22,21 @@ function Table({ items }) {
         </tr>
       </thead>
       <tbody>
-        {items.map(item => (
-          <tr key={item.id}>
-            <td>{item.id}</td>
-            <td>{item.name}</td>
-            <td>{item.username}</td>
-            <td>{item.email}</td>
-            <td>
-              <ActionButtons />
-            </td>
-          </tr>
-        ))}
+        {items
+          .filter(item =>
+            item.name.toLowerCase().includes(searchText.toLowerCase())
+          )
+          .map(item => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+              <td>{item.username}</td>
+              <td>{item.email}</td>
+              <td>
+                <ActionButtons />
+              </td>
+            </tr>
+          ))}
       </tbody>
     </table>
   );

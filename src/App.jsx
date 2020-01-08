@@ -1,20 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 // actions
-import { addItem } from './redux/item/itemAction';
+// import { addItem } from './redux/item/itemAction';
 
 // comp
 import Header from './components/Header';
 import Table from './components/Table';
 
-const mapStateToProps = state => ({
-  items: state.itemsRx.items
-});
+// const mapStateToProps = state => ({
+//   items: state.itemsRx.items
+// });
 
-const mapDispatchToProps = dispatch => ({
-  addingItem: itemName => dispatch(addItem(itemName))
-});
+// const mapDispatchToProps = dispatch => ({
+//   addingItem: itemName => dispatch(addItem(itemName))
+// });
 
 class App extends React.Component {
   componentDidMount() {}
@@ -35,9 +35,6 @@ class App extends React.Component {
   // }
 
   render() {
-    // const { items } = this.props;
-    // const { input } = this.state;
-
     return (
       <>
         <Header />
@@ -50,4 +47,4 @@ class App extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

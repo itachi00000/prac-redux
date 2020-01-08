@@ -10,16 +10,16 @@ export function addItem(item) {
   };
 }
 
+export function searchItem(searchText) {
+  return {
+    type: SEARCH_ITEM,
+    payload: searchText
+  };
+}
+
 export function deleteItem(id) {
   return {
     type: DELETE_ITEM,
     payload: id
-  };
-}
-
-export function searchItem(value) {
-  return {
-    type: SEARCH_ITEM,
-    payload: value
   };
 }
