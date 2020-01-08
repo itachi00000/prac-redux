@@ -10,10 +10,10 @@ export function addItem(item) {
   };
 }
 
-export function searchItem(searchText) {
+export function searchItem(query) {
   return {
     type: SEARCH_ITEM,
-    payload: searchText
+    payload: query
   };
 }
 

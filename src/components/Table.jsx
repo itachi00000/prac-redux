@@ -4,12 +4,33 @@ import { connect } from 'react-redux';
 // comp
 import ActionButtons from './ActionButtons';
 
-const mapStateToProps = state => ({
-  items: state.itemsRx.items,
-  searchText: state.itemsRx.searchText
+// actions
+import {} from '../redux/item/itemAction';
+
+const mapStateToProps = ({ itemsRx }) => ({
+  items: itemsRx.items,
+  query: itemsRx.query
 });
 
-function Table({ items, searchText }) {
+const mapDispatchToProps = dispatch => ({
+  test: () => dispatch()
+});
+
+function Table({ items, query }) {
+  const filteredItems = items.filter(item =>
+    item.name.toLowerCase().includes(query.toLowerCase())
+  );
+  const mapItems = filteredItems.map(item => (
+    <tr key={item.id}>
+      <td>{item.id}</td>
+      <td>{item.name}</td>
+      <td>{item.username}</td>
+      <td>{item.email}</td>
+      <td>
+        <ActionButtons selectedId={item.id} />
+      </td>
+    </tr>
+  ));
   return (
     <table className="table table-striped">
       <thead>
@@ -21,24 +42,8 @@ function Table({ items, searchText }) {
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>
-        {items
-          .filter(item =>
-            item.name.toLowerCase().includes(searchText.toLowerCase())
-          )
-          .map(item => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.username}</td>
-              <td>{item.email}</td>
-              <td>
-                <ActionButtons />
-              </td>
-            </tr>
-          ))}
-      </tbody>
+      <tbody>{mapItems}</tbody>
     </table>
   );
 }
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

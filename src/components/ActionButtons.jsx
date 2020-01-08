@@ -2,11 +2,14 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
+// action
+import { deleteItem } from '../redux/item/itemAction';
+
 const mapDispatchToProps = dispatch => ({
-  del: () => dispatch()
+  onDeleteItem: selectedId => dispatch(deleteItem(selectedId))
 });
 
-function ActionButtons() {
+function ActionButtons({ onDeleteItem, selectedId }) {
   return (
     <>
       <button type="button" className="btn btn-info">
@@ -15,7 +18,11 @@ function ActionButtons() {
       <button type="button" className="btn btn-primary">
         Edit
       </button>
-      <button type="button" className="btn btn-outline-danger">
+      <button
+        type="button"
+        onClick={() => onDeleteItem(selectedId)}
+        className="btn btn-outline-danger"
+      >
         Delete
       </button>
     </>
