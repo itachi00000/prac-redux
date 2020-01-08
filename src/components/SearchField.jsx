@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// action
 import { searchItem } from '../redux/item/itemAction';
 
 const mapDispatchToProps = dispatch => ({

@@ -1,4 +1,5 @@
 import React from 'react';
+
 // import { connect } from 'react-redux';
 
 // actions
@@ -35,6 +36,9 @@ class App extends React.Component {
   // }
 
   render() {
+    // const { items } = this.props;
+    // const { input } = this.state;
+
     return (
       <>
         <Header />

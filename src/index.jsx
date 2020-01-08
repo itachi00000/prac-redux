@@ -9,6 +9,7 @@ import App from './App';
 //
 import './bootstrap.min.css';
 
+// for test
 // window.store = store;
 // window.addItem = addItem;
 
