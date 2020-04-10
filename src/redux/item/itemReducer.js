@@ -1,4 +1,4 @@
-import { ADD_ITEM, SEARCH_ITEM, DELETE_ITEM } from '../actionTypes';
+import { ADD_ITEM, SEARCH_QUERY, DELETE_ITEM } from '../actionTypes';
 
 import robotData from '../../robots';
 
@@ -17,7 +17,7 @@ export function itemReducer(state = initState, action = {}) {
         ...state,
         items: state.items.filter(item => item.id !== action.payload)
       };
-    case SEARCH_ITEM:
+    case SEARCH_QUERY:
       return { ...state, query: action.payload };
     default:
       return state;
@@ -30,3 +30,6 @@ export function otherReducer(state, action = {}) {
       return state;
   }
 }
+
+// case SEARCH_ITEM:
+//       return { ...state, query: action.payload };

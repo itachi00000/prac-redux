@@ -25,3 +25,5 @@ yarn-error.log*
 # my
 .eslintrc.json
 robots.js
+practicing.jsx
+Row.jsx

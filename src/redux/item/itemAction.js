@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, SEARCH_ITEM } from '../actionTypes';
+import { ADD_ITEM, DELETE_ITEM, SEARCH_QUERY } from '../actionTypes';
 
 const nextItemId = 0;
 
@@ -10,9 +10,9 @@ export function addItem(item) {
   };
 }
 
-export function searchItem(query) {
+export function searchQuery(query) {
   return {
-    type: SEARCH_ITEM,
+    type: SEARCH_QUERY,
     payload: query
   };
 }

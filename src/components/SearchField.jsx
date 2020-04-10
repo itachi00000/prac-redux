@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // action
-import { searchItem } from '../redux/item/itemAction';
+import { searchQuery } from '../redux/item/itemAction';
 
 const mapDispatchToProps = dispatch => ({
-  searchingItem: searchText => dispatch(searchItem(searchText))
+  searchingItem: searchText => dispatch(searchQuery(searchText))
 });
 
 function SearchField({ searchingItem }) {
